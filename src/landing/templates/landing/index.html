@@ -1,0 +1,256 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>familio</title>
+    <meta name="description" content="One page Bootstrap 4 theme to show What&#39;s new in Bootstrap 4. Discover new features like cards, the xl grid tier, em sizing and how to convert from Bootstrap 3." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Codeply">
+
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body class="bg-faded">
+    <header id="first">
+    <div class="header-content">
+        <div class="inner">
+            <h1>Welcome to Familio</h1>
+            <h5 class="wow fadeIn text-normal wow fadeIn">A free and easy platform to create family trees with medical history</h5>
+            <a class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3" data-toggle="modal" title="A free Bootstrap theme" href="#aboutModal">Get Started</a>
+        </div>
+    </div>
+    </header>
+    <nav id="topNav" class="navbar fixed-top navbar-toggleable-sm">
+        <div class="container">
+            <button class="navbar-toggler hidden-md-up float-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                ☰
+            </button>
+            <a class="navbar-brand page-scroll" href="#first"> familio </a>
+            <div class="collapse navbar-collapse" id="collapsingNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#one">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#two">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#three">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#last">Contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" >Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" title="A free Bootstrap theme" href="http://127.0.0.1:8000/profile">Enter</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="one">
+           <div class="container wow fadeInUp">
+            <h2>About</h2>
+            <p class="lead">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+
+        </div>
+    </section>
+    <section id="two" class="bg-alt">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="m-t-0 text-primary">How It Works</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-ios-grid-view-outline wow fadeIn" data-wow-delay=".1s"></i>
+                        <h6 class="text-uppercase">Easier</h6>
+                        <p class="text-muted m-b-0">Flexbox provides <a href="http://v4-alpha.getbootstrap.com/getting-started/flexbox">simpler, more flexible layout</a> options like vertical centering.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-social-sass wow fadeInUp"></i>
+                        <h6 class="text-uppercase">Sass-y</h6>
+                        <p class="text-muted m-b-0">Use SASS to easily customize your Bootstrap 4 projects.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center">
+                    <div class="feature">
+                        <i class="icon-lg ion-social-css3-outline wow fadeIn" data-wow-delay=".1s"></i>
+                        <h6 class="text-uppercase">It's Modern</h6>
+                        <p class="text-muted m-b-0">Introduced in CSS3, flexbox won't work in older browsers like <a href="http://caniuse.com/#feat=flexbox">IE9</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="three">
+        <div class="container-fluid">
+            <h2 class="text-primary text-center text-uppercase">Support</h2>
+            <p class="lead">
+
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+            </p>
+        </div>
+        <br>
+    </section>
+    <section id="last">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2 class="margin-top-0 wow fadeIn">Get in Touch</h2>
+                    <hr class="primary">
+                    <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
+                </div>
+                <div class="col-lg-10 offset-lg-1 text-center">
+                    <form class="contact-form row">
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="col-md-4">
+                            <label></label>
+                            <input type="text" class="form-control" placeholder="Phone">
+                        </div>
+                        <div class="col-md-12">
+                            <label></label>
+                            <textarea class="form-control" rows="9" placeholder="Your message here.."></textarea>
+                        </div>
+                        <div class="col-md-4 offset-md-4">
+                            <label></label>
+                            <button type="button" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-lg">Send <i class="ion-android-arrow-forward"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-3">
+                    <h6 class="text-uppercase">familio</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://medium.com/@bootply/bootstrap-4-whats-new-visual-guide-c84dd81d8387" target="ext">What's New</a></li>
+                        <li><a href="http://codeply.com/tagged/bootstrap-4" target="ext">Examples</a></li>
+                        <li><a href="http://getbootstrap.com" target="ext">Official</a></li>
+                        <li><a href="http://www.codeply.com/go/p/bootstrap_4.0.alpha" target="ext">Playground</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-3 column">
+                    <h6 class="text-uppercase">About</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-3 column">
+                    <h6 class="text-uppercase">Stay Posted</h6>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-sm-3 text-right">
+                    <h6 class="text-uppercase">Follow</h6>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a rel="nofollow" href="" title="Twitter"><i class="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
+                        <li class="list-inline-item"><a rel="nofollow" href="" title="Facebook"><i class="icon-lg ion-social-facebook-outline"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <span class="float-right text-muted small">  ©2017 Familio</span>
+        </div>
+    </footer>
+    <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="//placehold.it/1200x700/222?text=..." id="galleryImage" class="center-block img-fluid">
+                    <p>
+                        <br>
+                        <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h2 class="text-center">Log In or Sign Up</h2>
+                    <h6 class="text-center">It's free and easy!</h6>
+
+                    <div id="login-content">
+                      <form>
+                        <fieldset id="inputs">
+                          <input id="username" type="email" name="Email" placeholder="Your email address" required>
+                          <input id="password" type="password" name="Password" placeholder="Password" required>
+                        </fieldset>
+                        <fieldset id="actions">
+                          <input type="submit" id="submit" value="Log in">
+                          <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                      </form>
+                    </div>
+
+                    <br> -->
+                    <!-- <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true"> OK </button> -->
+                <!-- </div>
+            </div>
+        </div>
+    </div> -->
+    <div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h2 class="text-center">Nice Job!</h2>
+                    <p class="text-center">You clicked the button, but it doesn't actually go anywhere because this is only a demo.</p>
+                    <p class="text-center"><a href="https://medium.com/@bootply/bootstrap-4-whats-new-visual-guide-c84dd81d8387">Learn More</a></p>
+                    <br>
+                    <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--scripts loaded here-->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+</html>

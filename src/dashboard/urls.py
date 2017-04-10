@@ -1,4 +1,4 @@
-"""familio URL Configuration
+"""dashboard URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from . import views
+
+app_name = 'dashboard'
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('landing.urls' )),
-    url(r'^profile/', include('dashboard.urls', namespace="dashboard" )),
+
+
+
+    url(r'^authenticate/$', views.authenticateView.as_view()),
+    url(r'^register/$', views.registerView.as_view()),
+    url(r'^logout/$', views.logoutUser),
+    url(r'^$', views.dashboard, name = 'profile')
+
 ]

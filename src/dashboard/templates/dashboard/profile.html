@@ -1,0 +1,54 @@
+{% extends 'dashboard/base.html' %}
+{% block title %} Register {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                  {% if user.is_authenticated %}
+                  <h3>Welcome {{ user.get_username }}!</h3>
+                  {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+
+                  <h3> Create Tree </h3>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  
+                  <h3>View Tree</h3>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>{% block title %} Viberr {% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- logo -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Viberr </a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="#">
+                        <span class="" aria-hidden="true"> </span>&nbsp; Account Settings </a>
+                </li>
+                <li class="">
+                    <a href="/profile/logout/">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true" > </span>&nbsp; Logout </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+
+</body>
+
+</html>
