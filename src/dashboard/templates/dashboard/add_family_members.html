@@ -1,0 +1,60 @@
+{% extends 'dashboard/base.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Members</title>
+<meta name="description" content="A genogram is a family tree diagram for visualizing hereditary patterns." />
+  <!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+  <meta charset="UTF-8">
+  <!-- <script src="../release/go.js"></script>
+    <script src="../assets/js/goSamples.js"></script> --> <!-- this is only for the GoJS Samples framework -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.1/go-debug.js"></script>
+
+
+
+
+
+</head>
+<body>
+
+<div id="sample">
+
+  <div class="panel panel-default">
+      <div class="panel-body">
+
+          <h3>Add Family Members</h3>
+
+      </div>
+  </div>
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    {% if error_message %}
+                        <p><strong> {{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'dashboard/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+
+                                <button type="submit" class="btn btn-success"> Submit </button>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+</body>
+</html>
+{% endblock %}

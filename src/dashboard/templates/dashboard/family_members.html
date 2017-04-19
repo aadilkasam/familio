@@ -1,0 +1,78 @@
+{% extends 'dashboard/base.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Members</title>
+<meta name="description" content="A genogram is a family tree diagram for visualizing hereditary patterns." />
+  <!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+  <meta charset="UTF-8">
+  <!-- <script src="../release/go.js"></script>
+    <script src="../assets/js/goSamples.js"></script> --> <!-- this is only for the GoJS Samples framework -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.1/go-debug.js"></script>
+
+
+
+
+
+</head>
+<body>
+
+  <div class="row">
+
+      <div class="col-sm-12 col-md-7">
+          <div class="panel panel-default">
+              <div class="panel-body">
+
+
+                <h3><a href="/profile/add_family_members/">Add Family Members</a></h3>
+
+
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+<div id="sample">
+
+  <div class="panel panel-default">
+      <div class="panel-body">
+
+          <h3>Family Members</h3>
+
+
+          <table class="table">
+              <thead>
+              <tr>
+                  <th>Key</th>
+                  <th>Name</th>
+                  <th>Sex</th>
+                  <th>mother</th>
+                  <th>Father</th>
+                  <th>Attribute</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for relationships in data %}
+                  <tr>
+                      <td>{{ relationships.key }}</td>
+                      <td>{{ relationships.name }}</td>
+                      <td>{{ relationships.sex }}</td>
+                      <td>{{ relationships.mother }}</td>
+                      <td>{{ relationships.father }}</td>
+                      <td>{{ relationships.attribute }}</td>
+
+                  </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+
+      </div>
+  </div>
+
+</div>
+</body>
+</html>
+{% endblock %}

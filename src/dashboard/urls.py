@@ -22,8 +22,11 @@ app_name = 'dashboard'
 
 urlpatterns = [
 
-
-
+    url(r'^add_family_members', views.add_family_members, name= 'add_family_members'),
+    url(r'^family_members', views.family_members, name= 'family_members'),
+    url(r'^example_tree', views.example_tree, name= 'example_tree'),
+    url(r'^view_tree', views.view_tree, name= 'view_tree'),
+    url(r'^edit/$', views.edit_profile, name = 'edit_profile'),
     url(r'^authenticate/$', views.authenticateView.as_view()),
     url(r'^register/$', views.registerView.as_view()),
     url(r'^logout/$', views.logoutUser),

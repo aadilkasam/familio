@@ -6,8 +6,13 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import registerForm
-from .forms import authenticateForm
+from .forms import registerForm, authenticateForm, editProfileForm, familyMembersForm
+from models import sampleTree, relationships
+
+import json
+
+from django.shortcuts import render_to_response
+from django.core import serializers
 
 
 # Create your views here.
@@ -17,6 +22,7 @@ def dashboard(request):
         print('not logged in');
         # return render(request,'dashboard/login.html', {})
         return HttpResponseRedirect('/profile/authenticate')
+
 
     return render(request, 'dashboard/profile.html', {})
 
@@ -103,34 +109,45 @@ class authenticateView(View):
 
         return render(request, self.template_name, {'form': form})
 
-class authenticateView2(View):
-    form_class = authenticateForm
-    template_name = 'dashboard/authenticate.html'
+def edit_profile(request):
+    form = editProfileForm()
+    return render(request, 'dashboard/edit_profile.html', {'form': form})
 
-    def get(self, request):
-        form = self.form_class(None)
-        return render(request, self.template_name, {'form': form})
 
-    def post(self, request):
-        form = self.form_class(request.POST)
-        print('posting form')
+def example_tree(request):
 
+    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
+    return render(request, 'dashboard/example_tree.html')
+
+def family_members(request):
+
+    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
+    data = relationships.objects.all()
+    print(data)
+    return render(request, 'dashboard/family_members.html', {'data': data })
+
+def add_family_members(request):
+
+    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
+    if request.method=='POST':
+        form = familyMembersForm(request.POST)
         if form.is_valid():
+            member=form.save(commit=False)
+            member.name=request.POST.get('name')
+            member.sex=request.POST.get('sex')
+            member.attribute=request.POST.get('attribute')
 
-            username = request.POST['username']
-            password = request.POST['password']
+            member.save()
+            return redirect('dashboard:family_members')
 
-            print('form works fine')
-
-            user = authenticate(username=username, password=password)
-
-            auth_login(request, user)
-            return redirect('dashboard:profile')
+    else:
+        form = familyMembersForm()
+    return render(request, 'dashboard/add_family_members.html', {'form': form})
 
 
-                # if user.is_active:
-                #
-                #     auth_login(request, user)
-                #     return redirect('dashboard:profile')
 
-        return render(request, self.template_name, {'form': form})
+def view_tree(request):
+
+    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
+    data = sampleTree.objects.all()
+    return render(request, 'dashboard/view_tree.html', {'data': data })
