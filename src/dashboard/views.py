@@ -144,6 +144,7 @@ def add_family_members(request):
             member.name=request.POST.get('name')
             member.sex=request.POST.get('sex')
             member.attribute=request.POST.get('attribute')
+            member.UserID = request.user.id
             member.save()
             return redirect('dashboard:family_members')
 
