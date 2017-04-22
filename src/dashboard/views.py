@@ -1,4 +1,5 @@
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
@@ -8,6 +9,7 @@ from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import registerForm, authenticateForm, editProfileForm, familyMembersForm
 from models import sampleTree, relationships
+from django.contrib.auth.models import User
 
 import json
 
@@ -119,10 +121,16 @@ def example_tree(request):
     # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
     return render(request, 'dashboard/example_tree.html')
 
+@login_required
 def family_members(request):
 
     # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
-    data = relationships.objects.all()
+    # data = relationships.objects.all()
+    # myUserID = builtindjangounction to tell you what is is
+    myLocalID = request.user.id
+    data = relationships.objects.filter(UserID=myLocalID)
+    print(request.user.id)
+    # data = relationships.objects.filter(UserID__exact=1)
     print(data)
     return render(request, 'dashboard/family_members.html', {'data': data })
 
@@ -136,7 +144,6 @@ def add_family_members(request):
             member.name=request.POST.get('name')
             member.sex=request.POST.get('sex')
             member.attribute=request.POST.get('attribute')
-
             member.save()
             return redirect('dashboard:family_members')
 

@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -41,7 +41,9 @@ class sampleTree(models.Model):
     relations = models.CharField(max_length=10000)
 
 class relationships(models.Model):
+
     key = models.AutoField(primary_key=True, blank = False)
+    UserID = models.IntegerField(null = True, blank = True)
     name = models.CharField(max_length=500, blank = False)
     sex = models.CharField(max_length=1,
                               choices=GENDER_CHOICES, blank = False)
