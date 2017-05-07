@@ -29,4 +29,4 @@ class familyMembersForm(forms.ModelForm):
 
     class Meta:
         model = relationships
-        fields = ('name', 'sex', 'attribute')
+        fields = ('name', 'sex', 'attribute', 'mother', 'father', 'husband', 'wife')

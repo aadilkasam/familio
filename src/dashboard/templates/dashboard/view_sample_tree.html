@@ -8,6 +8,7 @@
 
   <script type="text/javascript" id="code">
     function init() {
+      if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
       var $ = go.GraphObject.make;
       myDiagram =
         $(go.Diagram, "myDiagramDiv",
@@ -23,7 +24,7 @@
                 $(go.Placeholder)
               ),
             layout:  // use a custom layout, defined below
-              $(GenogramLayout, { direction: 90, layerSpacing: 100, columnSpacing: 50 })
+              $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 15 })
           });
 
       // determine the color for each attribute shape
@@ -70,6 +71,7 @@
           case "D": return brarc;
           case "S": return slash;
           default: return tlarc;
+
         }
       }
 
@@ -152,19 +154,12 @@
 
       // n: name, s: sex, m: mother, f: father, ux: wife, vir: husband, a: attributes/markers
       setupDiagram(myDiagram, [
-        { key: 1, n: "Aadil Kasam", s: "M", m: 2, f: 4, a: ["A"] },
-        { key: 2, n: "Zaitun Kasam", s: "F", m: 10, f: 13, vir: 4, a: ["B"] },
-        { key: 3, n: "Aabid Kasam", s: "M", m: 2, f: 4 },
-        { key: 4, n: "Hussein Kasam", s: "M", m: 14, f: 11, ux: 2 },
-        { key: 5, n: "Altaf Kasam", s: "M", m: 2, f: 4, a: ["A"] },
-        { key: 7, n: "Fahid Enver", s: "M", m: 10, f: 13, ux: 15 },
-        { key: 10, n: "amy", s: "F", vir: 13, a: ["A", "C"] },
-        { key: 11, n: "james", s: "M", ux: 14 },
-        { key: 13, n: "Bob", s: "M", ux: 10, a: ["D", "A", "S"] },
-        { key: 14, n: "Rachel", s: "F", vir: 11, a:["D", "B", "C", "S"] },
-        { key: 15, n: "Bushra", s: "F", vir: 7 }
+        {% for sampleTree in data %}
+            {{ sampleTree.relations|safe }}
+
+        {% endfor %}
         ],
-        1 /* focus on this person */);
+        4 /* focus on this person */);
     }
 
 
@@ -185,6 +180,14 @@
       var node = diagram.findNodeForKey(focusId);
       if (node !== null) {
         diagram.select(node);
+        // remove any spouse for the person under focus:
+        //node.linksConnected.each(function(l) {
+        //  if (!l.isLabeledLink) return;
+        //  l.opacity = 0;
+        //  var spouse = l.getOtherNode(node);
+        //  spouse.opacity = 0;
+        //  spouse.pickable = false;
+        //});
       }
     }
 
@@ -515,7 +518,6 @@
 
 </head>
 <body onload="init()">
-
   <div class="row">
     <div class="col-sm-12 col-md-12;" >
         <div class="panel panel-default">
@@ -529,7 +531,7 @@
   </div>
 
 
-<div class="row">
+  <div class="row">
   <div class="col-sm-12 col-md-7">
       <div class="panel panel-default">
           <div class="panel-body">
@@ -551,7 +553,7 @@
           </div>
       </div>
   </div>
-</div>
+  </div>
 </body>
 </html>
 {% endblock %}

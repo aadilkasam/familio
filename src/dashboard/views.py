@@ -1,7 +1,8 @@
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
@@ -111,6 +112,7 @@ class authenticateView(View):
 
         return render(request, self.template_name, {'form': form})
 
+
 def edit_profile(request):
     form = editProfileForm()
     return render(request, 'dashboard/edit_profile.html', {'form': form})
@@ -136,7 +138,6 @@ def family_members(request):
 
 def add_family_members(request):
 
-    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
     if request.method=='POST':
         form = familyMembersForm(request.POST)
         if form.is_valid():
@@ -152,10 +153,29 @@ def add_family_members(request):
         form = familyMembersForm()
     return render(request, 'dashboard/add_family_members.html', {'form': form})
 
+def member_update(request, id):
+    instance = get_object_or_404(relationships, key=id)
+    form = familyMembersForm(request.POST or None, instance=instance)
+    if form.is_valid():
+          instance = form.save(commit=False)
+          instance.save()
+          return redirect('dashboard:family_members')
+    return render(request, 'dashboard/update_family_members.html', {'form': form})
 
+def member_delete(request, id):
+    instance = get_object_or_404(relationships, key=id)
+    instance.delete()
+    return redirect('dashboard:family_members')
+
+
+def view_sample_tree(request):
+
+    data = sampleTree.objects.all()
+    return render(request, 'dashboard/view_sample_tree.html', {'data': data })
 
 def view_tree(request):
 
-    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
-    data = sampleTree.objects.all()
+    myLocalID = request.user.id
+    data = relationships.objects.filter(UserID=myLocalID).filter(key=3)
+    print(data)
     return render(request, 'dashboard/view_tree.html', {'data': data })

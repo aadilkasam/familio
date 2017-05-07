@@ -21,11 +21,11 @@
 
   <div class="row">
 
-      <div class="col-sm-6 col-md-6">
+      <div class="col-sm-4 col-md-4">
           <div class="panel panel-default">
               <div class="panel-body">
 
-
+                <h4>Step 1</h4>
                 <h3><a href="/profile/add_family_members/">Add Family Members</a></h3>
 
 
@@ -33,12 +33,24 @@
           </div>
       </div>
 
-      <div class="col-sm-6 col-md-6">
+      <div class="col-sm-4 col-md-4">
           <div class="panel panel-default">
               <div class="panel-body">
 
-
+                <h4>Step 2</h4>
                 <h3><a href="/profile/add_family_members/">Add Relationships</a></h3>
+
+
+              </div>
+          </div>
+      </div>
+
+      <div class="col-sm-4 col-md-4">
+          <div class="panel panel-default">
+              <div class="panel-body">
+
+                <h4>Step 3</h4>
+                <h3><a href="/profile/view_tree/">View Tree</a></h3>
 
 
               </div>
@@ -63,6 +75,8 @@
                   <th>Sex</th>
                   <th>mother</th>
                   <th>Father</th>
+                  <th>Husband</th>
+                  <th>Wife</th>
                   <th>Attribute</th>
               </tr>
               </thead>
@@ -74,7 +88,11 @@
                       <td>{{ relationships.sex }}</td>
                       <td>{{ relationships.mother }}</td>
                       <td>{{ relationships.father }}</td>
+                      <td>{{ relationships.husband }}</td>
+                      <td>{{ relationships.wife }}</td>
                       <td>{{ relationships.attribute }}</td>
+                      <td><a href="{% url  'dashboard:member_update' relationships.key %}"> Edit </a></td>
+                      <td><a href="{% url  'dashboard:member_delete' relationships.key %}"> Delete </a></td>
 
                   </tr>
               {% endfor %}

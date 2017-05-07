@@ -17,6 +17,7 @@ CONDITION_CHOICES = (
 ('B', 'Condition B'),
 ('C', 'Condition C'),
 ('D', 'Condition D'),
+('S', 'Deceased')
 
 )
 class EditProfile(models.Model):
@@ -40,6 +41,7 @@ class sampleTree(models.Model):
     tree_name = models.CharField(max_length=250)
     relations = models.CharField(max_length=10000)
 
+
 class relationships(models.Model):
 
     key = models.AutoField(primary_key=True, blank = False)
@@ -53,3 +55,11 @@ class relationships(models.Model):
     wife = models.IntegerField(null = True, blank = True)
     attribute = models.CharField(max_length=100,
                               choices=CONDITION_CHOICES, null = True, blank = True)
+
+
+
+    def __str__(self):
+        return '{ key: %s, n: "%s", s: "%s", m: %s, f: %s, ux: %s, vir: %s, a: ["%s"] },' % (self.key, self.name, self.sex, self.mother, self.father, self.wife, self.husband, self.attribute)
+
+    def get_absolute_url(self):
+        return reverse('dashboard:member_update', kwargs={'id': self.key})
