@@ -25,6 +25,7 @@ urlpatterns = [
 
 
     url(r'^view_tree', views.view_tree, name= 'view_tree'),
+    url(r'^add_relationships', views.add_relationships, name= 'add_relationships'),
     url(r'^add_family_members', views.add_family_members, name= 'add_family_members'),
     url(r'^family_members/(?P<id>[0-9]+)/delete/$', views.member_delete, name='member_delete'),
     url(r'^family_members/(?P<id>[0-9]+)/$', views.member_update, name='member_update'),

@@ -30,3 +30,16 @@ class familyMembersForm(forms.ModelForm):
     class Meta:
         model = relationships
         fields = ('name', 'sex', 'attribute', 'mother', 'father', 'husband', 'wife')
+
+class relationshipsForm(forms.ModelForm):
+
+    class Meta:
+        model = relationships
+        fields = ('name', 'mother', 'father', 'husband', 'wife')
+
+# class relationshipsForm(forms.Form):
+#     Name = forms.ModelChoiceField(queryset=relationships.objects.values_list('name', flat=True))
+#     Mother = forms.ModelChoiceField(queryset=relationships.objects.values_list('name', flat=True))
+#     Father = forms.ModelChoiceField(queryset=relationships.objects.values_list('name', flat=True))
+#     Husband = forms.ModelChoiceField(queryset=relationships.objects.values_list('name', flat=True))
+#     Wife = forms.ModelChoiceField(queryset=relationships.objects.values_list('name', flat=True))

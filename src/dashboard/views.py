@@ -8,12 +8,10 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import registerForm, authenticateForm, editProfileForm, familyMembersForm
+from .forms import registerForm, authenticateForm, editProfileForm, familyMembersForm, relationshipsForm
 from models import sampleTree, relationships
 from django.contrib.auth.models import User
-
 import json
-
 from django.shortcuts import render_to_response
 from django.core import serializers
 
@@ -26,19 +24,12 @@ def dashboard(request):
         # return render(request,'dashboard/login.html', {})
         return HttpResponseRedirect('/profile/authenticate')
 
-
     return render(request, 'dashboard/profile.html', {})
 
 
 def login(request):
     form_class = registerForm
     template_name = 'dashboard/registration_form.html'
-
-    # display blank form
-    # def get(self, request):
-    #     form = self.form_class(None)
-    #     return render(request, self.template_name, {'form': form})
-
     return render(request, self.template_name, {'form': form})
 
 
@@ -87,7 +78,6 @@ class registerView(View):
         return render(request, self.template_name, {'form': form})
 
 class authenticateView(View):
-    # print('im in authenticate view')
     form_class = authenticateForm
     template_name = 'dashboard/authenticate.html'
 
@@ -120,21 +110,18 @@ def edit_profile(request):
 
 def example_tree(request):
 
-    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
     return render(request, 'dashboard/example_tree.html')
 
 @login_required
 def family_members(request):
 
-    # data = serializers.serialize('json', sampleTree.objects.all(), fields=('relations'))
-    # data = relationships.objects.all()
-    # myUserID = builtindjangounction to tell you what is is
     myLocalID = request.user.id
     data = relationships.objects.filter(UserID=myLocalID)
     print(request.user.id)
-    # data = relationships.objects.filter(UserID__exact=1)
     print(data)
     return render(request, 'dashboard/family_members.html', {'data': data })
+
+
 
 def add_family_members(request):
 
@@ -153,14 +140,34 @@ def add_family_members(request):
         form = familyMembersForm()
     return render(request, 'dashboard/add_family_members.html', {'form': form})
 
+def add_relationships(request):
+
+
+
+    if request.method=='POST':
+        form = relationshipsForm(request.POST)
+        if form.is_valid():
+            relation = form.save(commit=False)
+            relation.name = request.POST.get('name')
+            relation.mother = request.POST.get('mother')
+            relation.father = request.POST.get('father')
+            relation.husband = request.POST.get('husband')
+            relation.wife = request.POST.get('wife')
+            relation.save()
+    else:
+        form = relationshipsForm()
+    return render(request, 'dashboard/add_relationships.html', {'form': form })
+
 def member_update(request, id):
+    myLocalID = request.user.id
+    data = relationships.objects.filter(UserID=myLocalID)
     instance = get_object_or_404(relationships, key=id)
     form = familyMembersForm(request.POST or None, instance=instance)
     if form.is_valid():
           instance = form.save(commit=False)
           instance.save()
           return redirect('dashboard:family_members')
-    return render(request, 'dashboard/update_family_members.html', {'form': form})
+    return render(request, 'dashboard/update_family_members.html', {'form': form, 'data': data})
 
 def member_delete(request, id):
     instance = get_object_or_404(relationships, key=id)
@@ -176,6 +183,28 @@ def view_sample_tree(request):
 def view_tree(request):
 
     myLocalID = request.user.id
-    data = relationships.objects.filter(UserID=myLocalID).filter(key=3)
+    data = relationships.objects.filter(UserID=myLocalID)
     print(data)
+
+
+    # print('00000000000')
+    # my_family = {}
+    # for item in relationships.objects.filter(UserID=myLocalID):
+    #     if item.key:
+    #         my_family.append( 'key: %s' % (item.key) )
+    #     if item.name:
+    #         my_family.append( 'name: %s' % (item.name) )
+    #
+    # print(my_family)
+
+
+
+    # print('00000000000')
+    # my_family = []
+    # for item in relationships.objects.filter(UserID=myLocalID):
+    #     my_local_list = []
+    #     if item.mother:
+    #        my_family.append('mother: %s' % (item.mother))
+    # print(my_family)
+
     return render(request, 'dashboard/view_tree.html', {'data': data })

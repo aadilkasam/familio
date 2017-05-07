@@ -160,7 +160,35 @@
       // n: name, s: sex, m: mother, f: father, ux: wife, vir: husband, a: attributes/markers
       setupDiagram(myDiagram, [
           {% for relationships in data %}
-                {{ relationships|cut:"None"|safe }}
+          {
+          key: {{ relationships.key |safe }},
+          n: "{{ relationships.name |safe }}",
+          sex: "{{ relationships.sex |safe }}",
+          s: "{{ relationships.sex |safe }}",
+
+          {% if relationships.father != None %}
+          f: {{ relationships.father |safe }},
+          {% endif %}
+
+          {% if relationships.mother != None %}
+          m: {{ relationships.mother |safe }},
+          {% endif %}
+
+          {% if relationships.husband != None %}
+          ux: {{ relationships.husband |safe }},
+          {% endif %}
+
+          {% if relationships.wife != None %}
+          vir: {{ relationships.wife |safe }},
+          {% endif %}
+
+          {% if relationships.attribute != None %}
+          a: ["{{ relationships.attribute |safe }}"],
+          {% endif %}
+
+
+
+          },
           {% endfor %}
         ],
         4 /* focus on this person */);
@@ -510,6 +538,10 @@
       return null;
     };
     // end GenogramLayout class
+
+    function myFunction() {
+    window.print();
+    }
   </script>
 
 
@@ -547,6 +579,7 @@
 
             </p>
 
+              <button onclick="myFunction()">Print this page</button>
 
           </div>
       </div>
