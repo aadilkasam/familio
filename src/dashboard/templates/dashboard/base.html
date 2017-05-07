@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>{% block title %} familio {% endblock %}</title>
     {% load staticfiles %}
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
@@ -30,13 +31,7 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
 
-
-
             <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                    <a href="/profile/edit_profile/">
-                        <span class="" aria-hidden="true"> </span>&nbsp; Account Settings </a>
-                </li>
                 <li class="">
                     <a href="/profile/logout/">
                         <span class="glyphicon glyphicon-off" aria-hidden="true" > </span>&nbsp; Logout </a>

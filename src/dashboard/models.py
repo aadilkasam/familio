@@ -20,28 +20,14 @@ CONDITION_CHOICES = (
 ('S', 'Deceased')
 
 )
-class EditProfile(models.Model):
-    first_name = models.CharField(max_length=250)
-    surname = models.CharField(max_length=500)
-    gender = models.CharField(max_length=1,
-                              choices=GENDER_CHOICES)
-    date_of_birth = models.DateField()
-    condition = models.CharField(max_length=1,
-                              choices=CONDITION_CHOICES, null = True, blank=True)
 
-    # def get_absolute_url(self):
-    #     return reverse('music:detail', kwargs={'pk': self.pk})
-    #
-    # def __str__(self):
-    #     return self.album_title + ' - ' + self.artist
-
-
-
+# database with data for sample tree
 class sampleTree(models.Model):
     tree_name = models.CharField(max_length=250)
     relations = models.CharField(max_length=10000)
 
 
+# relationships model containing all information about family members
 class relationships(models.Model):
 
     key = models.AutoField(primary_key=True, blank = False)
@@ -53,8 +39,7 @@ class relationships(models.Model):
     father = models.IntegerField(null = True, blank = True)
     husband = models.IntegerField(null = True, blank = True)
     wife = models.IntegerField(null = True, blank = True)
-    attribute = models.CharField(max_length=100,
-                              choices=CONDITION_CHOICES, null = True, blank = True)
+    attribute = models.CharField(max_length=100, null = True, blank = True)
 
 
 

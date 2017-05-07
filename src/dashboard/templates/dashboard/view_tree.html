@@ -183,10 +183,8 @@
           {% endif %}
 
           {% if relationships.attribute != None %}
-          a: ["{{ relationships.attribute |safe }}"],
+          a: ["{{ relationships.attribute.0 |safe }}", "{{ relationships.attribute.2 |safe }}", "{{ relationships.attribute.4 |safe }}", "{{ relationships.attribute.6 |safe }}", "{{ relationships.attribute.8 |safe }}"]
           {% endif %}
-
-
 
           },
           {% endfor %}
@@ -579,10 +577,14 @@
 
             </p>
 
-              <button onclick="myFunction()">Print this page</button>
-
           </div>
       </div>
+  </div>
+
+  <div class="col-sm-4 col-md-4">
+
+              <button onclick="myFunction()" class="btn btn-success btn-lg">Print this page</button>
+
   </div>
 </div>
 </body>

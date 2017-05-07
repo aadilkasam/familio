@@ -8,7 +8,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import registerForm, authenticateForm, editProfileForm, familyMembersForm, relationshipsForm
+from .forms import registerForm, authenticateForm, familyMembersForm, relationshipsForm
 from models import sampleTree, relationships
 from django.contrib.auth.models import User
 import json
@@ -17,27 +17,29 @@ from django.core import serializers
 
 
 # Create your views here.
+
+# goto main profile page if user is logged in
 def dashboard(request):
 
     if not request.user.is_authenticated():
         print('not logged in');
-        # return render(request,'dashboard/login.html', {})
         return HttpResponseRedirect('/profile/authenticate')
 
     return render(request, 'dashboard/profile.html', {})
 
-
+# log in form
 def login(request):
     form_class = registerForm
     template_name = 'dashboard/registration_form.html'
     return render(request, self.template_name, {'form': form})
 
-
+# log out user from website
 def logoutUser(request):
     logout(request)
     return redirect('/')
 
 
+# register class for website
 class registerView(View):
     form_class = registerForm
     template_name = 'dashboard/registration_form.html'
@@ -77,6 +79,7 @@ class registerView(View):
 
         return render(request, self.template_name, {'form': form})
 
+# authenticate if user has signed up
 class authenticateView(View):
     form_class = authenticateForm
     template_name = 'dashboard/authenticate.html'
@@ -102,16 +105,7 @@ class authenticateView(View):
 
         return render(request, self.template_name, {'form': form})
 
-
-def edit_profile(request):
-    form = editProfileForm()
-    return render(request, 'dashboard/edit_profile.html', {'form': form})
-
-
-def example_tree(request):
-
-    return render(request, 'dashboard/example_tree.html')
-
+# view family members
 @login_required
 def family_members(request):
 
@@ -121,12 +115,12 @@ def family_members(request):
     print(data)
     return render(request, 'dashboard/family_members.html', {'data': data })
 
-
-
+# add family members to database
 def add_family_members(request):
 
     if request.method=='POST':
         form = familyMembersForm(request.POST)
+        # save field values
         if form.is_valid():
             member=form.save(commit=False)
             member.name=request.POST.get('name')
@@ -140,24 +134,7 @@ def add_family_members(request):
         form = familyMembersForm()
     return render(request, 'dashboard/add_family_members.html', {'form': form})
 
-def add_relationships(request):
-
-
-
-    if request.method=='POST':
-        form = relationshipsForm(request.POST)
-        if form.is_valid():
-            relation = form.save(commit=False)
-            relation.name = request.POST.get('name')
-            relation.mother = request.POST.get('mother')
-            relation.father = request.POST.get('father')
-            relation.husband = request.POST.get('husband')
-            relation.wife = request.POST.get('wife')
-            relation.save()
-    else:
-        form = relationshipsForm()
-    return render(request, 'dashboard/add_relationships.html', {'form': form })
-
+# edit family members
 def member_update(request, id):
     myLocalID = request.user.id
     data = relationships.objects.filter(UserID=myLocalID)
@@ -169,42 +146,26 @@ def member_update(request, id):
           return redirect('dashboard:family_members')
     return render(request, 'dashboard/update_family_members.html', {'form': form, 'data': data})
 
+# delete family members from database
 def member_delete(request, id):
     instance = get_object_or_404(relationships, key=id)
     instance.delete()
     return redirect('dashboard:family_members')
 
+# view tree with pre loaded data
+def example_tree(request):
+    return render(request, 'dashboard/example_tree.html')
 
+# view sample tree with hardcoded data
 def view_sample_tree(request):
 
     data = sampleTree.objects.all()
     return render(request, 'dashboard/view_sample_tree.html', {'data': data })
 
+# view tree of data inputted by the user
 def view_tree(request):
 
     myLocalID = request.user.id
     data = relationships.objects.filter(UserID=myLocalID)
     print(data)
-
-
-    # print('00000000000')
-    # my_family = {}
-    # for item in relationships.objects.filter(UserID=myLocalID):
-    #     if item.key:
-    #         my_family.append( 'key: %s' % (item.key) )
-    #     if item.name:
-    #         my_family.append( 'name: %s' % (item.name) )
-    #
-    # print(my_family)
-
-
-
-    # print('00000000000')
-    # my_family = []
-    # for item in relationships.objects.filter(UserID=myLocalID):
-    #     my_local_list = []
-    #     if item.mother:
-    #        my_family.append('mother: %s' % (item.mother))
-    # print(my_family)
-
     return render(request, 'dashboard/view_tree.html', {'data': data })
