@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
-
+from datetime import date
 # Create your models here.
 
 GENDER_CHOICES = (
@@ -33,13 +33,14 @@ class relationships(models.Model):
     key = models.AutoField(primary_key=True, blank = False)
     UserID = models.IntegerField(null = True, blank = True)
     name = models.CharField(max_length=500, blank = False)
+    DOB = models.DateField(auto_now=False, auto_now_add=False, null = True, blank = True)
     sex = models.CharField(max_length=1,
                               choices=GENDER_CHOICES, blank = False)
     mother = models.IntegerField(null = True, blank = True)
     father = models.IntegerField(null = True, blank = True)
     husband = models.IntegerField(null = True, blank = True)
     wife = models.IntegerField(null = True, blank = True)
-    attribute = models.CharField(max_length=100, null = True, blank = True)
+    attribute = models.CharField(max_length=10, null = True, blank = True)
 
 
 
