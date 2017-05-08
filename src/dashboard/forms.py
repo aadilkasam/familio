@@ -22,10 +22,11 @@ class authenticateForm(forms.ModelForm):
 class familyMembersForm(forms.ModelForm):
     class Meta:
         model = relationships
-        fields = ('name', 'sex', 'DOB' , 'attribute', 'mother', 'father', 'husband', 'wife')
+        fields = ('name', 'sex', 'DOB' , 'attribute', 'smoker', 'mother', 'father', 'husband', 'wife')
         help_texts = {
             'attribute': 'Enter the conditions with a single space between each condition. (A B C D S) S = Deceased',
             'DOB': 'Enter your date of birth - DD/MM/YYYY',
+            'smoker': 'Tick the box if true',
         }
 
 class relationshipsForm(forms.ModelForm):

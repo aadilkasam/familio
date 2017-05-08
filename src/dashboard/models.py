@@ -40,6 +40,7 @@ class relationships(models.Model):
     father = models.IntegerField(null = True, blank = True)
     husband = models.IntegerField(null = True, blank = True)
     wife = models.IntegerField(null = True, blank = True)
+    smoker = models.BooleanField(default=False)
     attribute = models.CharField(max_length=10, null = True, blank = True)
 
 

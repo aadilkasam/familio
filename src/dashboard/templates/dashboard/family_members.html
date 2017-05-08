@@ -78,11 +78,14 @@
                   <th>Father</th>
                   <th>Husband</th>
                   <th>Wife</th>
+                  <th>
+                    Smoker?
+                  </th>
                   <th>Condition</th>
               </tr>
               </thead>
               <tbody>
-              {% for relationships in data %}
+              {% for relationships in data|dictsort:"name"  %}
                   <tr>
                       <td>{{ relationships.key }}</td>
                       <td>{{ relationships.name }}</td>
@@ -92,6 +95,7 @@
                       <td>{{ relationships.father }}</td>
                       <td>{{ relationships.husband }}</td>
                       <td>{{ relationships.wife }}</td>
+                      <td>{{ relationships.smoker }}</td>
                       <td>{{ relationships.attribute }}</td>
                       <td><a href="{% url  'dashboard:member_update' relationships.key %}"> Edit </a></td>
                       <td><a href="{% url  'dashboard:member_delete' relationships.key %}"> Delete </a></td>
