@@ -27,10 +27,8 @@ class familyMembersForm(forms.ModelForm):
             'attribute': 'Enter the conditions with a single space between each condition. (A B C D S) S = Deceased',
             'DOB': 'Enter your date of birth - DD/MM/YYYY',
             'smoker': 'Tick the box if true',
+            'mother': 'Enter the key (number) of your mother',
+            'father': 'Enter the key (number) of your father',
+            'husband': 'Enter the key (number) of your husband',
+            'wife': 'Enter the key (number) of your wife',
         }
-
-class relationshipsForm(forms.ModelForm):
-
-    class Meta:
-        model = relationships
-        fields = ('name', 'mother', 'father', 'husband', 'wife')

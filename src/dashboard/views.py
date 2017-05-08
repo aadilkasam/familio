@@ -8,7 +8,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.views.generic import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import registerForm, authenticateForm, familyMembersForm, relationshipsForm
+from .forms import registerForm, authenticateForm, familyMembersForm
 from models import sampleTree, relationships
 from django.contrib.auth.models import User
 import json
