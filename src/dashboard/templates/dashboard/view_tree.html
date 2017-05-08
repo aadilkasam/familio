@@ -546,7 +546,17 @@
 </head>
 <body onload="init()">
 
-  <div class="row">
+
+    <div class="col-sm-6 col-md-8">
+
+
+              <h3>Here is your family tree</h3>
+              <br />
+    </div>
+
+
+
+
     <div class="col-sm-12 col-md-12;" >
         <div class="panel panel-default">
             <div class="panel-body">
@@ -556,17 +566,54 @@
             </div>
         </div>
     </div>
+<div class="col-sm-8">
+  <div class="panel panel-default">
+      <div class="panel-body">
+
+          <h3>Family Members</h3>
+          <br />
+
+          <table class="table">
+              <thead>
+              <tr>
+
+                  <th>Name</th>
+                  <th>Sex</th>
+                  <th>
+                    Date of Birth
+                  </th>
+                  <th>
+                    Smoker?
+                  </th>
+                  <th>Condition</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for relationships in data|dictsort:"name" %}
+                  <tr>
+
+                      <td>{{ relationships.name }}</td>
+                      <td>{{ relationships.sex }}</td>
+                      <td>{{ relationships.DOB }}</td>
+                      <td>{{ relationships.smoker }}</td>
+                      <td>{{ relationships.attribute }}</td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+
+      </div>
   </div>
+</div>
 
 
-<div class="row">
-  <div class="col-sm-12 col-md-7">
+  <div class="col-sm-4">
       <div class="panel panel-default">
           <div class="panel-body">
 
 
-            <h5>Below explains what colour each condition represents:</h5>
-            <p>
+            <h4>Below explains what colour each condition represents:</h4>
+
               <ul>
                 <li><b>Green</b>: Condition A</li>
                 <li><b>Red</b>: Condition B </li>
@@ -575,18 +622,20 @@
                 <li><b>Red Slash</b>: Deceased </li>
               </ul>
 
-            </p>
+
 
           </div>
       </div>
-  </div>
 
-  <div class="col-sm-4 col-md-4">
 
-              <button onclick="myFunction()" class="btn btn-success btn-lg">Print this page</button>
-
-  </div>
 </div>
+
+<div class="col-sm-1">
+
+            <button onclick="myFunction()" class="btn btn-success btn-lg">Print this page</button>
+
+</div>
+
 </body>
 </html>
 {% endblock %}
