@@ -1,0 +1,18 @@
+This manual will provide instructions on how to use the website.
+
+The first page you will see on the website is the homepage.
+
+Step 1. Click on the get started button and sign up to the website by clicking on the register button.
+
+Step 2. You are now logged into the website. The next step is to click on the add family members button. This will load the family members page. Click again on the family members button and fill in the form with YOUR OWN details first. 
+
+Step 3. Once you have added your own details onto the table, click add family members again and add information about your relatives.
+NOTE: when typing conditions into the field, type the letter in caps lock with a single space between them. E.g A B C
+There are only 5 conditions in total - A B C D and S. S represents a deceased person
+
+Step 4. After adding family members you will need to create the link between each member. This can be done by clicking on the edit button of the family member and adding the key of the relatives into the relevent field. E.g if your key is 1 and your parents are 2 and 3, then edit your details by adding 2 and 3 on the mother and father fields. 
+
+Step 5. Once you have added all of the relatives and made the links between them. You can then click on the view tree button and view your family tree with medical records. You will also have the option to print or save the tree using the print button. 
+
+
+Thank You
