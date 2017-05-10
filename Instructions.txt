@@ -1,0 +1,11 @@
+This file contains instructions on how to browse the website locally.
+
+Step 1. Install python and django into your computer
+
+Step 2. Download the folder of files from this repo
+
+Step 3. On your command line, redirect into the src folder
+
+Step 4. Run the python server
+
+Step 5. Type 127.0.0.1:8000 and browse the website
